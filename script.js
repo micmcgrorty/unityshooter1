@@ -1,4 +1,7 @@
-fetch("https://shooterhighscores.herokuapp.com").then(function(response) {
+getScores();
+
+function getScores() {
+	fetch("https://shooterhighscores.herokuapp.com").then(function(response) {
 	if (response.status !== 200) {
 		console.log(
 			"Looks like there was a problem. Status Code: " + response.status
@@ -10,6 +13,7 @@ fetch("https://shooterhighscores.herokuapp.com").then(function(response) {
 	response.json().then(function(data) {
 		let scoreData = data;
 		let scoreTable = document.getElementById("scores");
+		scoreTable.innerHTML = '';
 
 		for (let i = 0; i < scoreData.length; i++) {
 			let node = document.createElement("li");
@@ -21,3 +25,9 @@ fetch("https://shooterhighscores.herokuapp.com").then(function(response) {
 		}
 	});
 });
+}
+
+let refreshButton = document.getElementById('refreshButton');
+refreshButton.addEventListener('click', function() {
+	getScores();
+})
