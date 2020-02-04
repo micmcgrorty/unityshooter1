@@ -1,4 +1,4 @@
-fetch("http://shooterhighscores.herokuapp.com").then(function(response) {
+fetch("https://shooterhighscores.herokuapp.com").then(function(response) {
 	if (response.status !== 200) {
 		console.log(
 			"Looks like there was a problem. Status Code: " + response.status
